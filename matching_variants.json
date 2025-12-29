@@ -1,0 +1,98 @@
+[
+  {
+    "Finding 1: BRCA2 - Pathogenic": {
+      "Basic Information": {
+        "Gene (HGNC)": "BRCA2",
+        "Transcript": "NM_000059.4",
+        "Genomic Location": "chr13:32376718",
+        "dbSNP ID": "rs2548553281",
+        "cDNA Change (HGVS)": "c.8681_8684delAAGTinsG",
+        "Protein Change (HGVS)": "p.Gln2894_Val2895delinsArg",
+        "Genomic Alternation": "A > G",
+        "Variant Type": "single nucleotide variant",
+        "Zygosity": "homozygous"
+      },
+      "ACMG Information": {
+        "ACMG Score": "3",
+        "ACMG/AMP Criteria Applied": "PM2,PM4_Supporting",
+        "Final Classification": "Uncertain_significance"
+      },
+      "Additional Parameters": {
+        "Biotype": "protein coding",
+        "ClinVar ID": "VCV002692256",
+        "ClinVar Review Status": "☆☆☆☆ (No assertion criteria provided)",
+        "ClinVar Submissions Summary": "Not available"
+      },
+      "ClinVar Information": {
+        "Associated Condition": "Hereditary breast and ovarian cancer syndrome",
+        "Inheritance Pattern": "Autosomal dominant",
+        "ClinGen Gene-Disease Validity": "Definitive for Breast-ovarian cancer, familial",
+        "Key Publications": "PMID:35802134; PMID:34012068; PMID:33410258; PMID:31672839; PMID:31479213 (+5 more)"
+      }
+    }
+  },
+  {
+    "Finding 2: DSP - Likely pathogenic": {
+      "Basic Information": {
+        "Gene (HGNC)": "DSP",
+        "Transcript": "NM_004415.4",
+        "Genomic Location": "chr6:7584617",
+        "dbSNP ID": "rs1581823904",
+        "cDNA Change (HGVS)": "c.7355A>T",
+        "Protein Change (HGVS)": "p.Gln2452Leu",
+        "Genomic Alternation": "C > T",
+        "Variant Type": "single nucleotide variant",
+        "Zygosity": "homozygous"
+      },
+      "ACMG Information": {
+        "ACMG Score": "0",
+        "ACMG/AMP Criteria Applied": "PM2,BP4_Moderate",
+        "Final Classification": "Uncertain_significance"
+      },
+      "Additional Parameters": {
+        "Biotype": "protein coding",
+        "ClinVar ID": "VCV000817454",
+        "ClinVar Review Status": "★☆☆☆ (Single submitter)",
+        "ClinVar Submissions Summary": "Not available"
+      },
+      "ClinVar Information": {
+        "Associated Condition": "Arrhythmogenic right ventricular cardiomyopathy",
+        "Inheritance Pattern": "Autosomal dominant",
+        "ClinGen Gene-Disease Validity": "Definitive for Arrhythmogenic right ventricular cardiomyopathy",
+        "Key Publications": "None cited"
+      }
+    }
+  },
+  {
+    "Finding 1: NF2 - Pathogenic": {
+      "Basic Information": {
+        "Gene (HGNC)": "NF2",
+        "Transcript": "NM_000268.4",
+        "Genomic Location": "chr22:29639192",
+        "dbSNP ID": "rs1350618734",
+        "cDNA Change (HGVS)": "c.343C>T",
+        "Protein Change (HGVS)": "p.Gln115*",
+        "Genomic Alternation": "C > T",
+        "Variant Type": "single nucleotide variant",
+        "Zygosity": "heterozygous"
+      },
+      "ACMG Information": {
+        "ACMG Score": "12",
+        "ACMG/AMP Criteria Applied": "PVS1,PM2,PP5_Moderate",
+        "Final Classification": "Pathogenic"
+      },
+      "Additional Parameters": {
+        "Biotype": "protein coding",
+        "ClinVar ID": "VCV002572466",
+        "ClinVar Review Status": "★☆☆☆ (Single submitter)",
+        "ClinVar Submissions Summary": "P:1"
+      },
+      "ClinVar Information": {
+        "Associated Condition": "Neurofibromatosis type 2",
+        "Inheritance Pattern": "Autosomal dominant",
+        "ClinGen Gene-Disease Validity": "Definitive for Neurofibromatosis type 2",
+        "Key Publications": "None cited"
+      }
+    }
+  }
+]
