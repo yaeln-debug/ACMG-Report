@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACMG Secondary Findings Report</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --positive-color: #e74c3c;
+            --negative-color: #27ae60;
+            --warning-color: #f39c12;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --border-color: #dee2e6;
+            --text-color: #333333;
+            --text-muted: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h4 {
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .header .report-info {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        /* Section numbering */
+        .section-number {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 600;
+            margin-right: 12px;
+            font-size: 0.95rem;
+        }
+
+        /* Patient Info Section */
+        .patient-section {
+            background: var(--card-background);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .patient-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .patient-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .patient-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .patient-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        /* Summary Cards Section */
+        .summary-cards-section {
+            margin-bottom: 30px;
+        }
+
+        .summary-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .summary-card {
+            background: var(--card-background);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .summary-card.positive {
+            border-left-color: var(--positive-color);
+        }
+
+        .summary-card.negative {
+            border-left-color: var(--negative-color);
+        }
+
+        .summary-card .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .summary-card.positive .number {
+            color: var(--positive-color);
+        }
+
+        .summary-card .label {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        /* Executive Summary */
+        .executive-section {
+            background: var(--card-background);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .executive-content {
+            margin-top: 20px;
+        }
+
+        .executive-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .executive-highlight {
+            background: #fff3cd;
+            border-left: 4px solid var(--warning-color);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .executive-highlight.positive-findings {
+            background: #f8d7da;
+            border-left-color: var(--positive-color);
+        }
+
+        .executive-highlight.no-findings {
+            background: #d4edda;
+            border-left-color: var(--negative-color);
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .section-header h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        /* Findings Summary Table */
+        .findings-summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background: var(--card-background);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .findings-summary-table th {
+            background: var(--positive-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .findings-summary-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .findings-summary-table tbody tr:hover {
+            background-color: #fef2f2;
+        }
+
+        .classification-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .classification-badge.pathogenic {
+            background: var(--positive-color);
+            color: white;
+        }
+
+        .classification-badge.likely-pathogenic {
+            background: var(--warning-color);
+            color: white;
+        }
+
+        /* Variant Findings */
+        .findings-section {
+            margin-bottom: 40px;
+        }
+
+        .finding-card {
+            background: var(--card-background);
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .finding-header {
+            background: linear-gradient(135deg, var(--positive-color), #c0392b);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .finding-header.likely-pathogenic {
+            background: linear-gradient(135deg, var(--warning-color), #e67e22);
+        }
+
+        .finding-header.carrier {
+            background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+        }
+
+        .finding-header.vus {
+            background: linear-gradient(135deg, #7f8c8d, #5d6d7e);
+        }
+
+        .classification-badge.carrier {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .classification-badge.vus {
+            background: #7f8c8d;
+            color: white;
+        }
+
+        /* VUS Warning Icon */
+        .vus-warning {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vus-warning .warning-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Carrier Info Badge */
+        .carrier-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .carrier-info .carrier-icon {
+            font-size: 1rem;
+        }
+
+        /* Summary table variants */
+        .findings-summary-table.carrier th {
+            background: var(--secondary-color);
+        }
+
+        .findings-summary-table.carrier tbody tr:hover {
+            background-color: #ebf5fb;
+        }
+
+        .findings-summary-table.vus th {
+            background: #7f8c8d;
+        }
+
+        .findings-summary-table.vus tbody tr:hover {
+            background-color: #f4f6f6;
+        }
+
+        /* Subsection headers */
+        .subsection-header {
+            display: flex;
+            align-items: center;
+            margin: 30px 0 20px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .subsection-header h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subsection-header.carrier h3 {
+            color: var(--secondary-color);
+        }
+
+        .subsection-header.vus h3 {
+            color: #7f8c8d;
+        }
+
+        .subsection-icon {
+            font-size: 1.3rem;
+        }
+
+        .no-findings-message {
+            color: var(--text-muted);
+            padding: 15px 20px;
+            background: var(--background-color);
+            border-radius: 6px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .finding-header h3 {
+            font-size: 1.3rem;
+        }
+
+        .finding-header .classification {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .finding-body {
+            padding: 0;
+        }
+
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .info-section {
+            background: var(--card-background);
+            padding: 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-section:last-child {
+            border-bottom: none;
+        }
+
+        .info-section h4 {
+            color: white;
+            background: var(--primary-color);
+            margin: 0;
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .info-section-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0;
+            padding: 15px 20px;
+            background: var(--background-color);
+        }
+
+        .info-row {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--card-background);
+            margin: 2px;
+            border-radius: 4px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            color: var(--text-color);
+            word-break: break-word;
+            font-size: 0.95rem;
+        }
+
+        .info-value.not-available {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Tooltip styles */
+        .info-label-container {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tooltip-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: help;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .tooltip-icon:hover {
+            background-color: var(--primary-color);
+        }
+
+        .tooltip-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            line-height: 1.4;
+            width: 280px;
+            max-width: 320px;
+            text-transform: none;
+            letter-spacing: normal;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: opacity 0.2s, visibility 0.2s;
+            text-align: left;
+        }
+
+        .tooltip-content::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--primary-color);
+        }
+
+        .tooltip-icon:hover .tooltip-content {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Adjust tooltip position for items near edges */
+        .info-row:first-child .tooltip-content,
+        .info-row:nth-child(2) .tooltip-content {
+            left: 0;
+            transform: translateX(0);
+        }
+
+        .info-row:first-child .tooltip-content::after,
+        .info-row:nth-child(2) .tooltip-content::after {
+            left: 16px;
+            transform: translateX(0);
+        }
+
+        /* Gene Results Table */
+        .gene-table-section {
+            margin-bottom: 40px;
+        }
+
+        .table-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            min-width: 250px;
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background: white;
+            cursor: pointer;
+        }
+
+        .table-container {
+            background: var(--card-background);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .gene-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .gene-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            position: sticky;
+            top: 0;
+        }
+
+        .gene-table th:hover {
+            background: #34495e;
+        }
+
+        .gene-table th::after {
+            content: ' ↕';
+            opacity: 0.5;
+            font-size: 0.8rem;
+        }
+
+        .gene-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .gene-table tbody tr:hover {
+            background-color: #f1f3f5;
+        }
+
+        .gene-table tbody tr.positive-row {
+            background-color: #fef2f2;
+        }
+
+        .gene-table tbody tr.positive-row:hover {
+            background-color: #fee2e2;
+        }
+
+        .result-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .result-badge.positive {
+            background: var(--positive-color);
+            color: white;
+        }
+
+        .result-badge.negative {
+            background: #e8f5e9;
+            color: var(--negative-color);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        /* Print Styles */
+        @media print {
+            .header {
+                background: var(--primary-color) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .table-controls {
+                display: none;
+            }
+
+            .finding-header {
+                background: var(--positive-color) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .section-number {
+                background: var(--secondary-color) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .tooltip-icon {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .info-section-content {
+                grid-template-columns: 1fr;
+            }
+
+            .patient-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .findings-summary-table {
+                font-size: 0.85rem;
+            }
+
+            .findings-summary-table th,
+            .findings-summary-table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h4>Whole Genome Sequencing | Clinical Report | Confidential</h4>
+            <h1>ACMG Secondary Findings Report</h1>
+            <p class="subtitle">Genetic Variant Analysis Based on ACMG SF v3.2 Guidelines</p>
+            <p class="report-info" id="reportInfo">Generated on: <span id="reportDate"></span></p>
+        </header>
+
+        <!-- Section 1: Patient Information -->
+        <section class="patient-section">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2>Patient Information</h2>
+            </div>
+            <div class="patient-grid">
+                <div class="patient-field">
+                    <span class="patient-label">Patient ID</span>
+                    <span class="patient-value" id="patientId">NA12878</span>
+                </div>
+                <div class="patient-field">
+                    <span class="patient-label">Patient Name</span>
+                    <span class="patient-value" id="patientName">—</span>
+                </div>
+                <div class="patient-field">
+                    <span class="patient-label">Date of Birth</span>
+                    <span class="patient-value" id="patientDob">—</span>
+                </div>
+                <div class="patient-field">
+                    <span class="patient-label">Sex</span>
+                    <span class="patient-value" id="patientSex">—</span>
+                </div>
+                <div class="patient-field">
+                    <span class="patient-label">Sample ID</span>
+                    <span class="patient-value" id="sampleId">NA12878.trio</span>
+                </div>
+                <div class="patient-field">
+                    <span class="patient-label">Sample Type</span>
+                    <span class="patient-value" id="sampleType">Whole Blood</span>
+                </div>
+                <div class="patient-field">
+                    <span class="patient-label">Collection Date</span>
+                    <span class="patient-value" id="collectionDate">—</span>
+                </div>
+                <div class="patient-field">
+                    <span class="patient-label">Ordering Physician</span>
+                    <span class="patient-value" id="physician">—</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Executive Summary -->
+        <section class="executive-section">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2>Executive Summary</h2>
+            </div>
+            <div class="executive-content" id="executiveSummary">
+                <!-- Populated by JavaScript -->
+            </div>
+            <div class="summary-cards-grid" id="summaryCardsGrid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Section 3: Pathogenic/Likely Pathogenic Findings -->
+        <section class="findings-section" id="findingsSection">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2>Pathogenic/Likely Pathogenic Findings</h2>
+            </div>
+
+            <!-- Summary Table -->
+            <div id="pathogenicSummaryTable">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Detailed Findings -->
+            <div id="pathogenicContainer">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Section 4: Carrier Status (Autosomal Recessive Conditions) -->
+        <section class="findings-section" id="carrierSection">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2>Carrier Status (Autosomal Recessive Conditions)</h2>
+            </div>
+
+            <!-- Summary Table -->
+            <div id="carrierSummaryTable">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Detailed Findings -->
+            <div id="carrierContainer">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Section 5: Variants of Uncertain Significance -->
+        <section class="findings-section" id="vusSection">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2>Variants of Uncertain Significance (VUS)</h2>
+            </div>
+
+            <!-- Summary Table -->
+            <div id="vusSummaryTable">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Detailed Findings -->
+            <div id="vusContainer">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Section 6: Gene Results Table -->
+        <section class="gene-table-section">
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2>Complete Gene Panel Results</h2>
+            </div>
+
+            <div class="table-controls">
+                <input type="text" class="search-box" id="searchBox" placeholder="Search genes, conditions...">
+                <select class="filter-select" id="resultFilter">
+                    <option value="all">All Results</option>
+                    <option value="positive">Positive Only</option>
+                    <option value="negative">Negative Only</option>
+                </select>
+                <select class="filter-select" id="diseaseFilter">
+                    <option value="all">All Disease Groups</option>
+                </select>
+            </div>
+
+            <div class="table-container">
+                <table class="gene-table" id="geneTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="gene">Gene</th>
+                            <th data-sort="disease">Disease Group</th>
+                            <th data-sort="condition">Associated Condition</th>
+                            <th data-sort="inheritance">Inheritance</th>
+                            <th data-sort="result">Result</th>
+                        </tr>
+                    </thead>
+                    <tbody id="geneTableBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>This report is generated for research purposes. Clinical interpretation should be performed by qualified professionals.</p>
+            <p>ACMG Secondary Findings Pipeline v1.0 | Medygene Research</p>
+        </footer>
+    </div>
+
+    <script>
+        // Data will be loaded from JSON files or embedded
+        let geneResults = [];
+        let matchingVariants = [];
+
+        // Field descriptions from parameter_reference.csv
+        const fieldDescriptions = {
+            'Gene (HGNC)': 'Official gene symbol from HUGO Gene Nomenclature Committee',
+            'Transcript': 'NCBI Reference Sequence identifier with version number',
+            'Genomic Location': 'Chromosome and position on GRCh38/hg38 reference genome',
+            'dbSNP ID': 'NCBI dbSNP reference SNP identifier for the variant',
+            'cDNA Change (HGVS)': 'HGVS notation describing the change at cDNA level',
+            'Protein Change (HGVS)': 'HGVS notation describing the resulting protein change',
+            'Genomic Alternation': 'The actual nucleotide change observed in the patient\'s VCF',
+            'Variant Type': 'Classification of the variant by its molecular mechanism',
+            'Zygosity': 'Whether variant is heterozygous (one copy) or homozygous (two copies)',
+            'ACMG Score': 'Computed score based on ACMG/AMP criteria weights (higher = more pathogenic). Very Strong = +8, Strong = +4, Moderate = +2, Supporting = +1 for pathogenic; negative points for benign.',
+            'ACMG/AMP Criteria Applied': 'Applied ACMG/AMP evidence criteria: PVS=very strong, PS=strong, PM=moderate, PP=supporting pathogenic; BA/BS/BP=benign',
+            'Final Classification': 'Overall pathogenicity classification: Pathogenic, Likely Pathogenic, VUS, Likely Benign, Benign',
+            'Biotype': 'Type of transcript: protein coding, nonsense mediated decay, pseudogene, etc.',
+            'ClinVar ID': 'Unique ClinVar Variation accession (VCV) for looking up the variant',
+            'ClinVar Review Status': 'Review level: 4 stars=practice guideline, 3 stars=expert panel, 2 stars=multiple submitters, 1 star=single submitter',
+            'ClinVar Submissions Summary': 'Format is Classification:Count. P=Pathogenic, LP=Likely Pathogenic, VUS=Uncertain, LB=Likely Benign, B=Benign. Example: P:3,LP:1 means 3 labs said Pathogenic, 1 said Likely Pathogenic',
+            'Associated Condition': 'The disease or phenotype associated with pathogenic variants in this gene',
+            'Inheritance Pattern': 'How the condition is inherited: AD=autosomal dominant, AR=autosomal recessive, XL=X-linked',
+            'ClinGen Gene-Disease Validity': 'ClinGen\'s assessment: Definitive, Strong, Moderate, Limited, Disputed, Refuted',
+            'Key Publications': 'PubMed IDs of publications supporting the variant\'s clinical significance'
+        };
+
+        // Patient information (can be set programmatically)
+        let patientInfo = {
+            patientId: 'NA12878',
+            patientName: '—',
+            patientDob: '—',
+            patientSex: '—',
+            sampleId: 'NA12878.trio',
+            sampleType: 'Whole Blood',
+            collectionDate: '—',
+            physician: '—'
+        };
+
+        // Initialize the report
+        async function initReport() {
+            try {
+                // Try to load from JSON files (relative paths)
+                const [geneResponse, variantResponse] = await Promise.all([
+                    fetch('gene_results.json').catch(() => null),
+                    fetch('matching_variants.json').catch(() => null)
+                ]);
+
+                if (geneResponse && geneResponse.ok) {
+                    geneResults = await geneResponse.json();
+                }
+                if (variantResponse && variantResponse.ok) {
+                    matchingVariants = await variantResponse.json();
+                }
+            } catch (e) {
+                console.log('Using embedded data or data needs to be provided');
+            }
+
+            // Set report date
+            document.getElementById('reportDate').textContent = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            renderPatientInfo();
+            renderExecutiveSummary();
+            renderSummaryCards();
+            renderAllFindings();
+            renderGeneTable();
+            setupEventListeners();
+        }
+
+        // Categorize variants into three groups
+        function categorizeVariants() {
+            const pathogenic = [];
+            const carrier = [];
+            const vus = [];
+
+            matchingVariants.forEach((variant, index) => {
+                const findingKey = Object.keys(variant)[0];
+                const finding = variant[findingKey];
+                const acmgInfo = finding['ACMG Information'] || {};
+                const clinvarInfo = finding['ClinVar Information'] || {};
+
+                const finalClassification = (acmgInfo['Final Classification'] || '').toLowerCase();
+                const inheritancePattern = (clinvarInfo['Inheritance Pattern'] || '').toLowerCase();
+
+                // Check if VUS (Uncertain significance)
+                if (finalClassification.includes('uncertain') || finalClassification.includes('vus')) {
+                    vus.push({ variant, index, findingKey, finding });
+                }
+                // Check if Carrier (Autosomal recessive)
+                else if (inheritancePattern.includes('autosomal recessive') || inheritancePattern.includes('ar')) {
+                    carrier.push({ variant, index, findingKey, finding });
+                }
+                // Otherwise it's Pathogenic/Likely Pathogenic
+                else {
+                    pathogenic.push({ variant, index, findingKey, finding });
+                }
+            });
+
+            return { pathogenic, carrier, vus };
+        }
+
+        function renderPatientInfo() {
+            document.getElementById('patientId').textContent = patientInfo.patientId;
+            document.getElementById('patientName').textContent = patientInfo.patientName;
+            document.getElementById('patientDob').textContent = patientInfo.patientDob;
+            document.getElementById('patientSex').textContent = patientInfo.patientSex;
+            document.getElementById('sampleId').textContent = patientInfo.sampleId;
+            document.getElementById('sampleType').textContent = patientInfo.sampleType;
+            document.getElementById('collectionDate').textContent = patientInfo.collectionDate;
+            document.getElementById('physician').textContent = patientInfo.physician;
+        }
+
+        function renderExecutiveSummary() {
+            const totalGenes = geneResults.length;
+            const positiveResults = geneResults.filter(g => g.Result.toLowerCase() === 'positive').length;
+            const positiveGenes = geneResults.filter(g => g.Result.toLowerCase() === 'positive').map(g => g.Gene);
+
+            // Categorize variants
+            const categories = categorizeVariants();
+            const pathogenicCount = categories.pathogenic.length;
+            const carrierCount = categories.carrier.length;
+            const vusCount = categories.vus.length;
+
+            let summaryHTML = '';
+            const hasFindings = pathogenicCount > 0 || carrierCount > 0 || vusCount > 0;
+
+            if (hasFindings) {
+                const geneList = positiveGenes.join(', ');
+
+                summaryHTML = `
+                    <p>This report presents the results of genetic screening for <strong>${totalGenes} genes</strong> associated with conditions recommended for secondary findings disclosure by the American College of Medical Genetics and Genomics (ACMG SF v3.2).</p>
+
+                    ${pathogenicCount > 0 ? `
+                    <div class="executive-highlight positive-findings">
+                        <strong>🔴 Actionable Findings Detected:</strong> This analysis identified <strong>${pathogenicCount} pathogenic/likely pathogenic variant(s)</strong> in autosomal dominant genes requiring immediate clinical attention.
+                    </div>
+                    ` : ''}
+
+                    ${carrierCount > 0 ? `
+                    <div class="executive-highlight" style="background: #d6eaf8; border-left-color: var(--secondary-color);">
+                        <strong>🧬 Carrier Status Identified:</strong> This analysis identified <strong>${carrierCount} variant(s)</strong> in autosomal recessive genes. The individual is a carrier and may pass this variant to offspring.
+                    </div>
+                    ` : ''}
+
+                    ${vusCount > 0 ? `
+                    <div class="executive-highlight" style="background: #f4f6f6; border-left-color: #7f8c8d;">
+                        <strong>⚠️ Variants of Uncertain Significance:</strong> This analysis identified <strong>${vusCount} VUS variant(s)</strong>. These variants require additional evidence for clinical interpretation.
+                    </div>
+                    ` : ''}
+
+                    <p>Detailed information about each variant, including genomic location, clinical associations, and supporting evidence, is provided in the sections below. Genetic counseling is recommended to discuss the implications of these findings.</p>
+                `;
+            } else {
+                summaryHTML = `
+                    <p>This report presents the results of genetic screening for <strong>${totalGenes} genes</strong> associated with conditions recommended for secondary findings disclosure by the American College of Medical Genetics and Genomics (ACMG SF v3.2).</p>
+
+                    <div class="executive-highlight no-findings">
+                        <strong>No Actionable Findings:</strong> This analysis did not identify any pathogenic, likely pathogenic, carrier status, or VUS variants in the genes screened.
+                    </div>
+
+                    <p>A negative result indicates that no clinically significant variants were detected in the genes analyzed. However, this does not eliminate genetic risk, as variants in genes not included in this panel or variants not detectable by current methods may still be present.</p>
+                `;
+            }
+
+            document.getElementById('executiveSummary').innerHTML = summaryHTML;
+        }
+
+        function renderSummaryCards() {
+            const totalGenes = geneResults.length;
+            const positiveResults = geneResults.filter(g => g.Result.toLowerCase() === 'positive').length;
+            const negativeResults = totalGenes - positiveResults;
+
+            // Categorize variants
+            const categories = categorizeVariants();
+            const pathogenicCount = categories.pathogenic.length;
+            const carrierCount = categories.carrier.length;
+            const vusCount = categories.vus.length;
+
+            const cardsHTML = `
+                <div class="summary-card">
+                    <div class="number">${totalGenes}</div>
+                    <div class="label">Genes Analyzed</div>
+                </div>
+                <div class="summary-card positive">
+                    <div class="number">${pathogenicCount}</div>
+                    <div class="label">Pathogenic/Likely Path.</div>
+                </div>
+                <div class="summary-card" style="border-left-color: var(--secondary-color);">
+                    <div class="number" style="color: var(--secondary-color);">${carrierCount}</div>
+                    <div class="label">Carrier Status</div>
+                </div>
+                <div class="summary-card" style="border-left-color: #7f8c8d;">
+                    <div class="number" style="color: #7f8c8d;">${vusCount}</div>
+                    <div class="label">VUS ⚠️</div>
+                </div>
+                <div class="summary-card negative">
+                    <div class="number">${negativeResults}</div>
+                    <div class="label">Negative Results</div>
+                </div>
+            `;
+
+            document.getElementById('summaryCardsGrid').innerHTML = cardsHTML;
+        }
+
+        function renderAllFindings() {
+            const categories = categorizeVariants();
+
+            renderCategoryFindings('pathogenic', categories.pathogenic, 'pathogenicSummaryTable', 'pathogenicContainer');
+            renderCategoryFindings('carrier', categories.carrier, 'carrierSummaryTable', 'carrierContainer');
+            renderCategoryFindings('vus', categories.vus, 'vusSummaryTable', 'vusContainer');
+        }
+
+        function renderCategoryFindings(category, variants, tableContainerId, detailContainerId) {
+            const tableContainer = document.getElementById(tableContainerId);
+            const detailContainer = document.getElementById(detailContainerId);
+
+            if (variants.length === 0) {
+                let message = '';
+                if (category === 'pathogenic') {
+                    message = 'No pathogenic or likely pathogenic variants detected in autosomal dominant genes.';
+                } else if (category === 'carrier') {
+                    message = 'No carrier status variants detected in autosomal recessive genes.';
+                } else if (category === 'vus') {
+                    message = 'No variants of uncertain significance detected.';
+                }
+                tableContainer.innerHTML = `<p class="no-findings-message">${message}</p>`;
+                detailContainer.innerHTML = '';
+                return;
+            }
+
+            // Render summary table
+            const tableClass = category === 'carrier' ? 'carrier' : (category === 'vus' ? 'vus' : '');
+            let tableHTML = `
+                <table class="findings-summary-table ${tableClass}">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Gene</th>
+                            <th>Classification</th>
+                            <th>Variant (HGVS)</th>
+                            <th>Condition</th>
+                            <th>Inheritance</th>
+                            <th>Zygosity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            variants.forEach((item, idx) => {
+                const { finding, findingKey } = item;
+                const match = findingKey.match(/Finding \d+: (\w+) - (.+)/);
+                const geneName = match ? match[1] : '—';
+                const classification = match ? match[2] : 'Unknown';
+
+                let badgeClass = 'pathogenic';
+                if (category === 'carrier') badgeClass = 'carrier';
+                else if (category === 'vus') badgeClass = 'vus';
+                else if (classification.toLowerCase().includes('likely')) badgeClass = 'likely-pathogenic';
+
+                const basicInfo = finding['Basic Information'] || {};
+                const clinvarInfo = finding['ClinVar Information'] || {};
+                const acmgInfo = finding['ACMG Information'] || {};
+
+                const hgvs = basicInfo['cDNA Change (HGVS)'] || '—';
+                const condition = clinvarInfo['Associated Condition'] || '—';
+                const inheritance = clinvarInfo['Inheritance Pattern'] || '—';
+                const zygosity = basicInfo['Zygosity'] || '—';
+
+                // For VUS, show the actual classification from ACMG
+                let displayClassification = classification;
+                if (category === 'vus') {
+                    displayClassification = acmgInfo['Final Classification'] || 'VUS';
+                    displayClassification = displayClassification.replace(/_/g, ' ');
+                }
+
+                tableHTML += `
+                    <tr>
+                        <td><strong>${idx + 1}</strong></td>
+                        <td><strong>${geneName}</strong></td>
+                        <td><span class="classification-badge ${badgeClass}">${category === 'vus' ? '⚠️ ' + displayClassification : displayClassification}</span></td>
+                        <td>${hgvs}</td>
+                        <td>${condition}</td>
+                        <td>${inheritance}</td>
+                        <td>${zygosity}</td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `
+                    </tbody>
+                </table>
+                <h3 style="margin: 30px 0 20px 0; color: ${category === 'carrier' ? 'var(--secondary-color)' : (category === 'vus' ? '#7f8c8d' : 'var(--primary-color)')};">Detailed Variant Information</h3>
+            `;
+
+            tableContainer.innerHTML = tableHTML;
+
+            // Render detailed cards
+            let findingsHTML = '';
+
+            variants.forEach((item, idx) => {
+                const { finding, findingKey } = item;
+                const match = findingKey.match(/Finding \d+: (\w+) - (.+)/);
+                const geneName = match ? match[1] : findingKey;
+                const classification = match ? match[2] : 'Unknown';
+                const acmgInfo = finding['ACMG Information'] || {};
+
+                let headerClass = '';
+                let displayClassification = classification;
+                let titlePrefix = '';
+
+                if (category === 'carrier') {
+                    headerClass = 'carrier';
+                    titlePrefix = '🧬 ';
+                    displayClassification = 'Carrier';
+                } else if (category === 'vus') {
+                    headerClass = 'vus';
+                    titlePrefix = '⚠️ ';
+                    displayClassification = (acmgInfo['Final Classification'] || 'VUS').replace(/_/g, ' ');
+                } else if (classification.toLowerCase().includes('likely pathogenic')) {
+                    headerClass = 'likely-pathogenic';
+                }
+
+                findingsHTML += `
+                    <div class="finding-card">
+                        <div class="finding-header ${headerClass}">
+                            <h3>${titlePrefix}Finding ${idx + 1}: ${geneName} Variant</h3>
+                            <span class="classification">${displayClassification}</span>
+                        </div>
+                        <div class="finding-body">
+                            <div class="info-grid">
+                                ${renderInfoSection('Basic Information', finding['Basic Information'])}
+                                ${renderInfoSection('ClinVar Information', finding['ClinVar Information'])}
+                                ${renderInfoSection('ACMG Information', finding['ACMG Information'])}
+                                ${renderInfoSection('Additional Parameters', finding['Additional Parameters'])}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            detailContainer.innerHTML = findingsHTML;
+        }
+
+        function renderInfoSection(title, data) {
+            if (!data) return '';
+
+            let rowsHTML = '';
+            for (const [key, value] of Object.entries(data)) {
+                const isNotAvailable = !value || value === 'Not available' || value === 'Not fetched' || value === 'None cited';
+                const valueClass = isNotAvailable ? 'not-available' : '';
+                const description = fieldDescriptions[key] || '';
+                const tooltipHTML = description ? `
+                    <span class="tooltip-icon">?
+                        <span class="tooltip-content">${description}</span>
+                    </span>
+                ` : '';
+
+                rowsHTML += `
+                    <div class="info-row">
+                        <div class="info-label-container">
+                            <span class="info-label">${key}</span>
+                            ${tooltipHTML}
+                        </div>
+                        <span class="info-value ${valueClass}">${value || 'Not available'}</span>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="info-section">
+                    <h4>${title}</h4>
+                    <div class="info-section-content">
+                        ${rowsHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGeneTable(filteredData = null) {
+            const data = filteredData || geneResults;
+            const tbody = document.getElementById('geneTableBody');
+
+            let rowsHTML = '';
+            data.forEach(gene => {
+                const isPositive = gene.Result.toLowerCase() === 'positive';
+                const rowClass = isPositive ? 'positive-row' : '';
+                const badgeClass = isPositive ? 'positive' : 'negative';
+
+                rowsHTML += `
+                    <tr class="${rowClass}">
+                        <td><strong>${gene.Gene}</strong></td>
+                        <td>${gene['Disease Group']}</td>
+                        <td>${gene['Associated Condition']}</td>
+                        <td>${gene.Inheritance}</td>
+                        <td><span class="result-badge ${badgeClass}">${gene.Result}</span></td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = rowsHTML;
+
+            // Populate disease filter dropdown
+            const diseaseGroups = [...new Set(geneResults.map(g => g['Disease Group']))].sort();
+            const diseaseFilter = document.getElementById('diseaseFilter');
+            if (diseaseFilter.options.length <= 1) {
+                diseaseGroups.forEach(group => {
+                    const option = document.createElement('option');
+                    option.value = group;
+                    option.textContent = group;
+                    diseaseFilter.appendChild(option);
+                });
+            }
+        }
+
+        function setupEventListeners() {
+            document.getElementById('searchBox').addEventListener('input', filterTable);
+            document.getElementById('resultFilter').addEventListener('change', filterTable);
+            document.getElementById('diseaseFilter').addEventListener('change', filterTable);
+
+            document.querySelectorAll('.gene-table th').forEach(th => {
+                th.addEventListener('click', () => sortTable(th.dataset.sort));
+            });
+        }
+
+        function filterTable() {
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            const resultFilter = document.getElementById('resultFilter').value;
+            const diseaseFilter = document.getElementById('diseaseFilter').value;
+
+            const filtered = geneResults.filter(gene => {
+                const matchesSearch = !searchTerm ||
+                    gene.Gene.toLowerCase().includes(searchTerm) ||
+                    gene['Disease Group'].toLowerCase().includes(searchTerm) ||
+                    gene['Associated Condition'].toLowerCase().includes(searchTerm);
+
+                const matchesResult = resultFilter === 'all' ||
+                    gene.Result.toLowerCase() === resultFilter;
+
+                const matchesDisease = diseaseFilter === 'all' ||
+                    gene['Disease Group'] === diseaseFilter;
+
+                return matchesSearch && matchesResult && matchesDisease;
+            });
+
+            renderGeneTable(filtered);
+        }
+
+        let sortDirection = {};
+        function sortTable(column) {
+            const columnMap = {
+                'gene': 'Gene',
+                'disease': 'Disease Group',
+                'condition': 'Associated Condition',
+                'inheritance': 'Inheritance',
+                'result': 'Result'
+            };
+
+            const key = columnMap[column];
+            sortDirection[column] = !sortDirection[column];
+
+            const sorted = [...geneResults].sort((a, b) => {
+                const valA = a[key].toLowerCase();
+                const valB = b[key].toLowerCase();
+
+                if (sortDirection[column]) {
+                    return valA.localeCompare(valB);
+                } else {
+                    return valB.localeCompare(valA);
+                }
+            });
+
+            renderGeneTable(sorted);
+        }
+
+        // Function to load data programmatically
+        function loadData(geneData, variantData, patientData = null) {
+            geneResults = geneData;
+            matchingVariants = variantData;
+            if (patientData) {
+                patientInfo = { ...patientInfo, ...patientData };
+            }
+            renderPatientInfo();
+            renderExecutiveSummary();
+            renderSummaryCards();
+            renderAllFindings();
+            renderGeneTable();
+        }
+
+        // Function to set patient information
+        function setPatientInfo(data) {
+            patientInfo = { ...patientInfo, ...data };
+            renderPatientInfo();
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initReport);
+    </script>
+</body>
+</html>
