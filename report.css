@@ -1,0 +1,803 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --positive-color: #e74c3c;
+    --negative-color: #27ae60;
+    --warning-color: #f39c12;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --border-color: #dee2e6;
+    --text-color: #333333;
+    --text-muted: #6c757d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.header h4 {
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.header .report-info {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+/* Section numbering */
+.section-number {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-weight: 600;
+    margin-right: 12px;
+    font-size: 0.95rem;
+}
+
+/* Patient Info Section */
+.patient-section {
+    background: var(--card-background);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.patient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.patient-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.patient-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.patient-value {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* Summary Cards Section */
+.summary-cards-section {
+    margin-bottom: 30px;
+}
+
+.summary-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.summary-card {
+    background: var(--card-background);
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.summary-card.positive {
+    border-left-color: var(--positive-color);
+}
+
+.summary-card.negative {
+    border-left-color: var(--negative-color);
+}
+
+.summary-card .number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.summary-card.positive .number {
+    color: var(--positive-color);
+}
+
+.summary-card .label {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+/* Executive Summary */
+.executive-section {
+    background: var(--card-background);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.executive-content {
+    margin-top: 20px;
+}
+
+.executive-content p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.executive-highlight {
+    background: #fff3cd;
+    border-left: 4px solid var(--warning-color);
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 0 6px 6px 0;
+}
+
+.executive-highlight.positive-findings {
+    background: #f8d7da;
+    border-left-color: var(--positive-color);
+}
+
+.executive-highlight.no-findings {
+    background: #d4edda;
+    border-left-color: var(--negative-color);
+}
+
+/* Section Headers */
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.section-header h2 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+/* Findings Summary Table */
+.findings-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.findings-summary-table th {
+    background: var(--positive-color);
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.findings-summary-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.findings-summary-table tbody tr:hover {
+    background-color: #fef2f2;
+}
+
+.classification-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.classification-badge.pathogenic {
+    background: var(--positive-color);
+    color: white;
+}
+
+.classification-badge.likely-pathogenic {
+    background: var(--warning-color);
+    color: white;
+}
+
+/* Variant Findings */
+.findings-section {
+    margin-bottom: 40px;
+}
+
+.finding-card {
+    background: var(--card-background);
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.finding-header {
+    background: linear-gradient(135deg, var(--positive-color), #c0392b);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.finding-header.likely-pathogenic {
+    background: linear-gradient(135deg, var(--warning-color), #e67e22);
+}
+
+.finding-header.carrier {
+    background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+}
+
+.finding-header.vus {
+    background: linear-gradient(135deg, #7f8c8d, #5d6d7e);
+}
+
+.classification-badge.carrier {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.classification-badge.vus {
+    background: #7f8c8d;
+    color: white;
+}
+
+/* VUS Warning Icon */
+.vus-warning {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vus-warning .warning-icon {
+    font-size: 1.2rem;
+}
+
+/* Carrier Info Badge */
+.carrier-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.carrier-info .carrier-icon {
+    font-size: 1rem;
+}
+
+/* Summary table variants */
+.findings-summary-table.carrier th {
+    background: var(--secondary-color);
+}
+
+.findings-summary-table.carrier tbody tr:hover {
+    background-color: #ebf5fb;
+}
+
+.findings-summary-table.vus th {
+    background: #7f8c8d;
+}
+
+.findings-summary-table.vus tbody tr:hover {
+    background-color: #f4f6f6;
+}
+
+/* Subsection headers */
+.subsection-header {
+    display: flex;
+    align-items: center;
+    margin: 30px 0 20px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.subsection-header h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.subsection-header.carrier h3 {
+    color: var(--secondary-color);
+}
+
+.subsection-header.vus h3 {
+    color: #7f8c8d;
+}
+
+.subsection-icon {
+    font-size: 1.3rem;
+}
+
+.no-findings-message {
+    color: var(--text-muted);
+    padding: 15px 20px;
+    background: var(--background-color);
+    border-radius: 6px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.finding-header h3 {
+    font-size: 1.3rem;
+}
+
+.finding-header .classification {
+    background: rgba(255,255,255,0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.finding-body {
+    padding: 0;
+}
+
+.info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.info-section {
+    background: var(--card-background);
+    padding: 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-section:last-child {
+    border-bottom: none;
+}
+
+.info-section h4 {
+    color: white;
+    background: var(--primary-color);
+    margin: 0;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.info-section h4.actionability-header {
+    background: linear-gradient(135deg, #16a085, #1abc9c);
+}
+
+.info-section h4.gene-protein-header {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+}
+
+/* Clinical Recommendations Section */
+.recommendation-card {
+    background: var(--card-background);
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border-left: 4px solid #16a085;
+}
+
+.recommendation-header {
+    background: linear-gradient(135deg, #16a085, #1abc9c);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recommendation-header h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.recommendation-header .evidence-badge {
+    background: rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.recommendation-body {
+    padding: 20px;
+}
+
+.recommendation-summary {
+    background: #e8f6f3;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 4px solid #16a085;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.recommendation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.recommendation-list {
+    background: var(--background-color);
+    padding: 15px 20px;
+    border-radius: 6px;
+}
+
+.recommendation-list h4 {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.recommendation-list h4 .list-icon {
+    font-size: 1.1rem;
+}
+
+.recommendation-list ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.recommendation-list ul li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+.recommendation-list.avoid {
+    background: #fef2f2;
+}
+
+.recommendation-list.avoid h4 {
+    color: var(--positive-color);
+}
+
+.no-recommendations {
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 15px 20px;
+    background: var(--background-color);
+    border-radius: 6px;
+}
+
+.info-section-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+    padding: 15px 20px;
+    background: var(--background-color);
+}
+
+.info-row {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--card-background);
+    margin: 2px;
+    border-radius: 4px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.info-value {
+    color: var(--text-color);
+    word-break: break-word;
+    font-size: 0.95rem;
+}
+
+.info-value.not-available {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Tooltip styles */
+.info-label-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: help;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.tooltip-icon:hover {
+    background-color: var(--primary-color);
+}
+
+.tooltip-content {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.4;
+    width: 280px;
+    max-width: 320px;
+    text-transform: none;
+    letter-spacing: normal;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: opacity 0.2s, visibility 0.2s;
+    text-align: left;
+}
+
+.tooltip-content::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--primary-color);
+}
+
+.tooltip-icon:hover .tooltip-content {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Adjust tooltip position for items near edges */
+.info-row:first-child .tooltip-content,
+.info-row:nth-child(2) .tooltip-content {
+    left: 0;
+    transform: translateX(0);
+}
+
+.info-row:first-child .tooltip-content::after,
+.info-row:nth-child(2) .tooltip-content::after {
+    left: 16px;
+    transform: translateX(0);
+}
+
+/* Gene Results Table */
+.gene-table-section {
+    margin-bottom: 40px;
+}
+
+.table-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    min-width: 250px;
+}
+
+.filter-select {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background: white;
+    cursor: pointer;
+}
+
+.table-container {
+    background: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.gene-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.gene-table th {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    position: sticky;
+    top: 0;
+}
+
+.gene-table th:hover {
+    background: #34495e;
+}
+
+.gene-table th::after {
+    content: ' ↕';
+    opacity: 0.5;
+    font-size: 0.8rem;
+}
+
+.gene-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.gene-table tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+.gene-table tbody tr.positive-row {
+    background-color: #fef2f2;
+}
+
+.gene-table tbody tr.positive-row:hover {
+    background-color: #fee2e2;
+}
+
+.result-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.result-badge.positive {
+    background: var(--positive-color);
+    color: white;
+}
+
+.result-badge.negative {
+    background: #e8f5e9;
+    color: var(--negative-color);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+}
+
+/* Print Styles */
+@media print {
+    .header {
+        background: var(--primary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .table-controls {
+        display: none;
+    }
+
+    .finding-header {
+        background: var(--positive-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .section-number {
+        background: var(--secondary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .tooltip-icon {
+        display: none;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .info-section-content {
+        grid-template-columns: 1fr;
+    }
+
+    .patient-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .findings-summary-table {
+        font-size: 0.85rem;
+    }
+
+    .findings-summary-table th,
+    .findings-summary-table td {
+        padding: 8px 10px;
+    }
+}
