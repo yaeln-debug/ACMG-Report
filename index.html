@@ -16,8 +16,22 @@
             <p class="report-info" id="reportInfo">Generated on: <span id="reportDate"></span></p>
         </header>
 
+        <!-- Table of Contents -->
+        <nav class="table-of-contents">
+            <h3>Report Contents</h3>
+            <ol>
+                <li><a href="#patientSection">Patient Information</a></li>
+                <li><a href="#executiveSection">Executive Summary</a></li>
+                <li><a href="#findingsSection">Pathogenic/Likely Pathogenic Findings</a></li>
+                <li><a href="#carrierSection">Carrier Status (Autosomal Recessive Conditions)</a></li>
+                <li><a href="#vusSection">Variants of Uncertain Significance (VUS)</a></li>
+                <li><a href="#geneTableSection">Complete Gene Panel Results</a></li>
+                <li><a href="#recommendationsSection">Clinical Recommendations</a></li>
+            </ol>
+        </nav>
+
         <!-- Section 1: Patient Information -->
-        <section class="patient-section">
+        <section class="patient-section" id="patientSection">
             <div class="section-header">
                 <span class="section-number">1</span>
                 <h2>Patient Information</h2>
@@ -59,7 +73,7 @@
         </section>
 
         <!-- Section 2: Executive Summary -->
-        <section class="executive-section">
+        <section class="executive-section" id="executiveSection">
             <div class="section-header">
                 <span class="section-number">2</span>
                 <h2>Executive Summary</h2>
@@ -127,7 +141,7 @@
         </section>
 
         <!-- Section 6: Gene Results Table -->
-        <section class="gene-table-section">
+        <section class="gene-table-section" id="geneTableSection">
             <div class="section-header">
                 <span class="section-number">6</span>
                 <h2>Complete Gene Panel Results</h2>
