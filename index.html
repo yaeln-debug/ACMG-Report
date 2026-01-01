@@ -332,13 +332,13 @@
 
                     ${pathogenicCount > 0 ? `
                     <div class="executive-highlight positive-findings">
-                        <strong>🔴 Actionable Findings Detected:</strong> This analysis identified <strong>${pathogenicCount} pathogenic/likely pathogenic variant(s)</strong> in autosomal dominant genes requiring immediate clinical attention.
+                        <strong>Actionable Findings Detected:</strong> This analysis identified <strong>${pathogenicCount} pathogenic/likely pathogenic variant(s)</strong> in autosomal dominant genes requiring immediate clinical attention.
                     </div>
                     ` : ''}
 
                     ${carrierCount > 0 ? `
                     <div class="executive-highlight" style="background: #d6eaf8; border-left-color: var(--secondary-color);">
-                        <strong>🧬 Carrier Status Identified:</strong> This analysis identified <strong>${carrierCount} variant(s)</strong> in autosomal recessive genes. The individual is a carrier and may pass this variant to offspring.
+                        <strong>Carrier Status Identified:</strong> This analysis identified <strong>${carrierCount} variant(s)</strong> in autosomal recessive genes. The individual is a carrier and may pass this variant to offspring.
                     </div>
                     ` : ''}
 
@@ -510,7 +510,7 @@
 
                 if (category === 'carrier') {
                     headerClass = 'carrier';
-                    titlePrefix = '🧬 ';
+                    titlePrefix = '';
                     displayClassification = 'Carrier';
                 } else if (category === 'vus') {
                     headerClass = 'vus';
@@ -684,7 +684,7 @@
                             <div class="recommendation-grid">
                                 ${outcomes.length > 0 ? `
                                 <div class="recommendation-list">
-                                    <h4><span class="list-icon">🎯</span> Outcomes</h4>
+                                    <h4><span class="list-icon"></span> Outcomes</h4>
                                     <ul>
                                         ${outcomes.map(item => `<li>${item}</li>`).join('')}
                                     </ul>
@@ -693,7 +693,7 @@
 
                                 ${interventions.length > 0 ? `
                                 <div class="recommendation-list">
-                                    <h4><span class="list-icon">💊</span> Interventions</h4>
+                                    <h4><span class="list-icon"></span> Interventions</h4>
                                     <ul>
                                         ${interventions.map(item => `<li>${item}</li>`).join('')}
                                     </ul>
