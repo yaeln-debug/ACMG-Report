@@ -16,22 +16,8 @@
             <p class="report-info" id="reportInfo">Generated on: <span id="reportDate"></span></p>
         </header>
 
-        <!-- Table of Contents -->
-        <nav class="table-of-contents">
-            <h3>Report Contents</h3>
-            <ol>
-                <li><a href="#patientSection">Patient Information</a></li>
-                <li><a href="#executiveSection">Executive Summary</a></li>
-                <li><a href="#findingsSection">Pathogenic/Likely Pathogenic Findings</a></li>
-                <li><a href="#carrierSection">Carrier Status (Autosomal Recessive Conditions)</a></li>
-                <li><a href="#vusSection">Variants of Uncertain Significance (VUS)</a></li>
-                <li><a href="#geneTableSection">Complete Gene Panel Results</a></li>
-                <li><a href="#recommendationsSection">Clinical Recommendations</a></li>
-            </ol>
-        </nav>
-
         <!-- Section 1: Patient Information -->
-        <section class="patient-section" id="patientSection">
+        <section class="patient-section">
             <div class="section-header">
                 <span class="section-number">1</span>
                 <h2>Patient Information</h2>
@@ -73,7 +59,7 @@
         </section>
 
         <!-- Section 2: Executive Summary -->
-        <section class="executive-section" id="executiveSection">
+        <section class="executive-section">
             <div class="section-header">
                 <span class="section-number">2</span>
                 <h2>Executive Summary</h2>
@@ -141,7 +127,7 @@
         </section>
 
         <!-- Section 6: Gene Results Table -->
-        <section class="gene-table-section" id="geneTableSection">
+        <section class="gene-table-section">
             <div class="section-header">
                 <span class="section-number">6</span>
                 <h2>Complete Gene Panel Results</h2>
@@ -346,13 +332,13 @@
 
                     ${pathogenicCount > 0 ? `
                     <div class="executive-highlight positive-findings">
-                        <strong>Actionable Findings Detected:</strong> This analysis identified <strong>${pathogenicCount} pathogenic/likely pathogenic variant(s)</strong> in autosomal dominant genes requiring immediate clinical attention.
+                        <strong>🔴 Actionable Findings Detected:</strong> This analysis identified <strong>${pathogenicCount} pathogenic/likely pathogenic variant(s)</strong> in autosomal dominant genes requiring immediate clinical attention.
                     </div>
                     ` : ''}
 
                     ${carrierCount > 0 ? `
                     <div class="executive-highlight" style="background: #d6eaf8; border-left-color: var(--secondary-color);">
-                        <strong>Carrier Status Identified:</strong> This analysis identified <strong>${carrierCount} variant(s)</strong> in autosomal recessive genes. The individual is a carrier and may pass this variant to offspring.
+                        <strong>🧬 Carrier Status Identified:</strong> This analysis identified <strong>${carrierCount} variant(s)</strong> in autosomal recessive genes. The individual is a carrier and may pass this variant to offspring.
                     </div>
                     ` : ''}
 
@@ -524,7 +510,7 @@
 
                 if (category === 'carrier') {
                     headerClass = 'carrier';
-                    titlePrefix = '';
+                    titlePrefix = '🧬 ';
                     displayClassification = 'Carrier';
                 } else if (category === 'vus') {
                     headerClass = 'vus';
@@ -688,6 +674,66 @@
                 const severity = actionability['Severity'] || 'Not evaluated';
                 const condition = clinvarInfo['Associated Condition'] || '';
 
+                // Build detailed recommendations HTML if available
+                const recommendations = finding['Recommendations'] || {};
+                const adultRecs = recommendations['Recommendations - Adult'] || [];
+                const pediatricRecs = recommendations['Recommendations - Pediatric'] || [];
+                const adultRefs = recommendations['References - Adult'] || '';
+                const pediatricRefs = recommendations['References - Pediatric'] || '';
+                const hasDetailedRecs = adultRecs.length > 0 || pediatricRecs.length > 0;
+
+                let detailedRecsHTML = '';
+                if (hasDetailedRecs) {
+                    const cardId = `rec-${geneName.replace(/\W/g, '')}`;
+                    const hasBothTabs = adultRecs.length > 0 && pediatricRecs.length > 0;
+
+                    detailedRecsHTML = `
+                        <div class="detailed-recommendations">
+                            <h4 class="detailed-recs-title">📋 Detailed Evidence-Based Recommendations</h4>
+                            ${hasBothTabs ? `
+                            <div class="rec-tabs" id="${cardId}-tabs">
+                                <button class="rec-tab active" data-target="${cardId}-adult" onclick="switchRecTab(this, '${cardId}')">👤 Adult</button>
+                                <button class="rec-tab" data-target="${cardId}-pediatric" onclick="switchRecTab(this, '${cardId}')">👶 Pediatric</button>
+                            </div>
+                            ` : ''}
+
+                            ${adultRecs.length > 0 ? `
+                            <div class="rec-tab-content ${hasBothTabs ? 'active' : ''}" id="${cardId}-adult">
+                                ${!hasBothTabs ? '<h5 class="rec-audience-label">👤 Adult Recommendations</h5>' : ''}
+                                <ol class="rec-detail-list">
+                                    ${adultRecs.map(item => `<li>${item}</li>`).join('')}
+                                </ol>
+                                ${adultRefs ? `
+                                <div class="rec-references">
+                                    <strong>References:</strong>
+                                    ${adultRefs.split(';').map(r => r.trim()).filter(r => r).map(pmid =>
+                                        `<a href="https://pubmed.ncbi.nlm.nih.gov/${pmid}/" target="_blank" rel="noopener" class="pmid-link">PMID:${pmid}</a>`
+                                    ).join(' ')}
+                                </div>
+                                ` : ''}
+                            </div>
+                            ` : ''}
+
+                            ${pediatricRecs.length > 0 ? `
+                            <div class="rec-tab-content ${!hasBothTabs ? '' : ''}" id="${cardId}-pediatric" ${hasBothTabs ? 'style="display:none;"' : ''}>
+                                ${!hasBothTabs ? '<h5 class="rec-audience-label">👶 Pediatric Recommendations</h5>' : ''}
+                                <ol class="rec-detail-list">
+                                    ${pediatricRecs.map(item => `<li>${item}</li>`).join('')}
+                                </ol>
+                                ${pediatricRefs ? `
+                                <div class="rec-references">
+                                    <strong>References:</strong>
+                                    ${pediatricRefs.split(';').map(r => r.trim()).filter(r => r).map(pmid =>
+                                        `<a href="https://pubmed.ncbi.nlm.nih.gov/${pmid}/" target="_blank" rel="noopener" class="pmid-link">PMID:${pmid}</a>`
+                                    ).join(' ')}
+                                </div>
+                                ` : ''}
+                            </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
+
                 recommendationsHTML += `
                     <div class="recommendation-card">
                         <div class="recommendation-header">
@@ -698,7 +744,7 @@
                             <div class="recommendation-grid">
                                 ${outcomes.length > 0 ? `
                                 <div class="recommendation-list">
-                                    <h4><span class="list-icon"></span> Outcomes</h4>
+                                    <h4><span class="list-icon">🎯</span> Outcomes</h4>
                                     <ul>
                                         ${outcomes.map(item => `<li>${item}</li>`).join('')}
                                     </ul>
@@ -707,13 +753,14 @@
 
                                 ${interventions.length > 0 ? `
                                 <div class="recommendation-list">
-                                    <h4><span class="list-icon"></span> Interventions</h4>
+                                    <h4><span class="list-icon">💊</span> Interventions</h4>
                                     <ul>
                                         ${interventions.map(item => `<li>${item}</li>`).join('')}
                                     </ul>
                                 </div>
                                 ` : ''}
                             </div>
+                            ${detailedRecsHTML}
                         </div>
                     </div>
                 `;
@@ -805,6 +852,18 @@
         function setPatientInfo(data) {
             patientInfo = { ...patientInfo, ...data };
             renderPatientInfo();
+        }
+
+        // Switch between Adult/Pediatric recommendation tabs
+        function switchRecTab(clickedTab, cardId) {
+            const tabContainer = clickedTab.parentElement;
+            tabContainer.querySelectorAll('.rec-tab').forEach(t => t.classList.remove('active'));
+            clickedTab.classList.add('active');
+
+            const targetId = clickedTab.getAttribute('data-target');
+            const card = tabContainer.parentElement;
+            card.querySelectorAll('.rec-tab-content').forEach(c => c.style.display = 'none');
+            document.getElementById(targetId).style.display = 'block';
         }
 
         // Initialize on page load
