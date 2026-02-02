@@ -48,48 +48,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* Table of Contents */
-.table-of-contents {
-    background: var(--card-background);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.table-of-contents h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-    border-bottom: 2px solid var(--secondary-color);
-    padding-bottom: 8px;
-}
-
-.table-of-contents ol {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 8px 30px;
-    list-style-position: inside;
-    padding-left: 0;
-}
-
-.table-of-contents li {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-}
-
-.table-of-contents a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.table-of-contents a:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
-}
-
 .header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
@@ -558,6 +516,129 @@ body {
     color: var(--positive-color);
 }
 
+/* Detailed Recommendations (Adult/Pediatric) */
+.detailed-recommendations {
+    margin-top: 20px;
+    border-top: 2px solid #e8f6f3;
+    padding-top: 20px;
+}
+
+.detailed-recs-title {
+    color: var(--primary-color) !important;
+    background: none !important;
+    padding: 0 0 12px 0 !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 12px !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.rec-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.rec-tab {
+    padding: 10px 24px;
+    border: none;
+    background: var(--background-color);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px 6px 0 0;
+    transition: background 0.2s, color 0.2s;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+    margin-right: 4px;
+    margin-bottom: -2px;
+}
+
+.rec-tab:hover {
+    background: #e8f6f3;
+    color: #16a085;
+}
+
+.rec-tab.active {
+    background: var(--card-background);
+    color: #16a085;
+    border-color: var(--border-color);
+    border-bottom: 2px solid var(--card-background);
+}
+
+.rec-tab-content {
+    padding: 20px 0;
+}
+
+.rec-audience-label {
+    color: #16a085;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.rec-detail-list {
+    margin: 0;
+    padding-left: 24px;
+    counter-reset: rec-counter;
+}
+
+.rec-detail-list li {
+    margin-bottom: 16px;
+    line-height: 1.7;
+    color: var(--text-color);
+    font-size: 0.92rem;
+    padding: 12px 16px;
+    background: var(--background-color);
+    border-radius: 6px;
+    border-left: 3px solid #1abc9c;
+    list-style-position: outside;
+}
+
+.rec-detail-list li:last-child {
+    margin-bottom: 0;
+}
+
+.rec-references {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: #f0faf7;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    border: 1px solid #d5f5e3;
+}
+
+.rec-references strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pmid-link {
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 2px 3px;
+    background: #16a085;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.pmid-link:hover {
+    background: #138d75;
+    text-decoration: none;
+}
+
 .no-recommendations {
     color: var(--text-muted);
     font-style: italic;
@@ -817,6 +898,32 @@ body {
 
     .tooltip-icon {
         display: none;
+    }
+
+    .rec-tabs {
+        display: none;
+    }
+
+    .rec-tab-content {
+        display: block !important;
+        page-break-inside: avoid;
+    }
+
+    .rec-tab-content::before {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #16a085;
+    }
+
+    #rec-APC-adult::before { content: "Adult Recommendations"; }
+    #rec-APC-pediatric::before { content: "Pediatric Recommendations"; }
+
+    .pmid-link {
+        background: none;
+        color: #16a085;
+        padding: 0;
+        border-radius: 0;
     }
 }
 
