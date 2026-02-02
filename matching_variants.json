@@ -1,37 +1,115 @@
 [
   {
-    "Finding 1: BRCA2 - Pathogenic": {
+    "Finding 1: APC - Pathogenic/Likely pathogenic": {
       "Basic Information": {
-        "Gene (HGNC)": "BRCA2",
-        "Transcript": "NM_000059.4",
-        "Genomic Location": "chr13:32376718",
-        "dbSNP ID": "rs2548553281",
-        "cDNA Change (HGVS)": "c.8681_8684delAAGTinsG",
-        "Protein Change (HGVS)": "p.Gln2894_Val2895delinsArg",
-        "Genomic Alternation": "A > G",
+        "Gene (HGNC)": "APC",
+        "Transcript": "NM_000038.6",
+        "Genomic Location": "chr5:112840102",
+        "dbSNP ID": "rs1580649018",
+        "cDNA Change (HGVS)": "c.4508C>G",
+        "Protein Change (HGVS)": "p.Ser1503*",
+        "Genomic Alternation": "T > G",
         "Variant Type": "single nucleotide variant",
-        "Zygosity": "homozygous"
+        "Zygosity": "heterozygous"
       },
       "ACMG Information": {
-        "ACMG Score": "3",
-        "ACMG/AMP Criteria Applied": "PM2,PM4_Supporting",
-        "Final Classification": "Uncertain_significance"
+        "ACMG Score": "10",
+        "ACMG/AMP Criteria Applied": "PVS1,PM2",
+        "Final Classification": "Pathogenic"
       },
       "Additional Parameters": {
         "Biotype": "protein coding",
-        "ClinVar ID": "VCV002692256",
-        "ClinVar Review Status": "☆☆☆☆ (No assertion criteria provided)",
+        "ClinVar ID": "VCV000824955",
+        "ClinVar Review Status": "★★☆☆ (Multiple submitters)",
         "ClinVar Submissions Summary": "Not available"
       },
       "ClinVar Information": {
-        "Associated Condition": "Hereditary breast and ovarian cancer syndrome",
-        "Inheritance Pattern": "Autosomal dominant",
-        "ClinGen Gene-Disease Validity": "Definitive for Fanconi anemia complementation group D1 (Autosomal Recessive)",
-        "Key Publications": "PMID:35802134; PMID:34012068; PMID:33410258; PMID:31672839; PMID:31479213 (+5 more)"
+        "Associated Condition": "Familial adenomatous polyposis",
+        "Inheritance Pattern": "AD",
+        "ClinGen Gene-Disease Validity": "Definitive for gastric adenocarcinoma and proximal polyposis of the stomach (Autosomal Dominant)",
+        "Key Publications": "None cited"
       },
       "Gene & Protein Information": {
-        "Protein Name": "Breast cancer type 2 susceptibility protein",
-        "Protein Function": "Involved in double-strand break repair and/or homologous recombination. Binds RAD51 and potentiates recombinational DNA repair by promoting assembly of RAD51 onto single-stranded DNA (ssDNA). Acts by targeting RAD51 to ssDNA over double-stranded DNA, enabling RAD51 to displace replication protein-A (RPA) from ssDNA and stabilizing RAD51-ssDNA filaments by blocking ATP hydrolysis. Part of a PALB2-scaffolded HR complex containing RAD51C and which is thought to play a role in DNA repair by HR."
+        "Protein Name": "Adenomatous polyposis coli protein",
+        "Protein Function": "Tumor suppressor. Promotes rapid degradation of CTNNB1 and participates in Wnt signaling as a negative regulator. APC activity is correlated with its phosphorylation state. Activates the GEF activity of SPATA13 and ARHGEF4. Plays a role in hepatocyte growth factor (HGF)-induced cell migration. Required for MMP9 up-regulation via the JNK signaling pathway in colorectal tumor cells. Associates with both microtubules and actin filaments, components of the cytoskeleton (PubMed:17293347)."
+      },
+      "Clinical Actionability": {
+        "Severity": "Moderate (serious morbidity)",
+        "Outcomes": [
+          "Morbidity and mortality due to colorectal cancer",
+          "Morbidity and mortality due to advanced-stage thyroid cancer",
+          "Morbidity and mortality due to upper GI (stomach and duodenum) cancer"
+        ],
+        "Interventions": [
+          "Colonoscopic surveillance to determine polyp burden and guide (if appropriate) timing of (procto) colectomy",
+          "Annual physical examination with possible ultrasound to detect thyroid cancer and guide thyroid cancer treatment",
+          "Periodic upper endoscopy to detect upper GI cancers or precursors and guide treatment"
+        ]
+      },
+      "Recommendations": {
+        "Recommendations - Adult": [
+          "Data on the effectiveness of surveillance to prevent or mitigate desmoid outcomes was not available. However, the first line of treatment in patients with large or growing intra-abdominal or abdominal wall tumors is sulindac in combination with high-dose selective estrogen receptor modulators (SERMs). One case series that included 64 patients with FAP reported that 86% of those treated showed regression or had stable desmoid size with a mean response time (to reach at least stable size) of 16.0 (±9.8) months with one long-term recurrence after >10 years and 2 desmoid-related deaths. However, randomized controlled data are lacking and given the variable natural history of desmoids, it is difficult to establish and qualify the benefit of this treatment regimen.",
+          "In a meta-analysis of 3 studies of 103 children, 54.3% of children who had screening EGDs had duodenal adenoma, with a pooled detection rate of 58% (95% CI, 42%-75%).",
+          "Two studies comparing patients with FAP who presented with symptoms compared with relatives of patients referred for screening, observed a much lower incidence of duodenal in those screened (incidence 2–10%) compared to those patients who presented with symptoms (47–70%).",
+          "There remains a risk of adenoma and CRC cancer after colectomy, and the extent of risk is influenced by the type of procedure chosen and type of tissue-sparing. Risk of developing adenomas at 10-year follow-up after IPAA is 51%. Registry studies indicate that 50-53% of patients undergo additional surgeries after their initial rectal-sparing procedure. The cumulative risk of rectal cancer varies from 2-24%, while the cumulative risk of dying from rectal cancer is between 9-12.5% following rectal-sparing procedures.",
+          "A systematic review of studies comparing CRC incidence and mortality before and after registry commencement, found 8 studies (3101 individuals) examining CRC incidence and 6 studies examining CRC mortality. Odds ratios for CRC incidence following registration range from 0.09-0.44, with all but one study showing a statistically significant effect. Odds ratios for CRC-related mortality range from 0.11-0.22, all significant.",
+          "Surgery is necessary to prevent CRC in adulthood. Therefore, endoscopic management of colorectal adenomas alone is not recommended in individuals with classic FAP. For most patients, the choice of surgery will be between total colectomy with ileorectal anastomosis (IRA) and proctocolectomy and ileal pouch anal anastomosis (IPAA). Decisions regarding the timing and type of operation should be discussed at a specialist center in a multidisciplinary setting and take into account disease phenotype (colon and rectal polyp burden, extensiveness of rectal involvement, presence and size of high-grade dysplasia, increase in polyp burden between screenings, severity of symptoms); genotype; family planning; personal and family history of desmoid disease; social, personal, and educational factors; likelihood of compliance with follow-up; and the pros and cons of the surgical options. The age of prophylactic colectomy is not fixed and is a topic that should be discussed in adolescence.",
+          "Treatment for FAP should include coordinated, timely and high-quality care to reduce cancer risk and improve compliance with recommendations for management and surveillance. Patients should be followed in dedicated units (national registries, genetic counseling centers, or high-risk cancer centers) where surveillance recommendations are monitored and audited, in order to improve adherence and provide the highest quality of care. Patients should also have access to a full range of management options that minimize the risk of morbidity and mortality.",
+          "The recommendations detailed below are largely applicable to classic and AFAP; however AFAP, with its milder course, may be manageable by colonoscopy and polypectomy and these patients may never require colectomy depending on polyp burden. However, the decision to forego colectomy should only be considered if high quality surveillance and robust recall systems are in place.",
+          "Upper gastrointestinal surveillance with esophagogastroduodenoscopy (EGD) is recommended, with thorough gastric assessment and inspection and description of the duodenum and ampullary site at every surveillance, beginning at age 25 years, with surveillance interval based on endoscopic findings (Spigelman score for duodenal adenomatosis staging) at baseline. There is some evidence that screen-detection of duodenal cancer may improve survival; FAP patients have been shown to have a median survival after a screen-detected cancer of 8 years (95% CI, 5.9 – upper end not estimated), versus 0.8 years (95% CI, 0.03-1.7) after symptomatic cancer (p < 0.0001)."
+        ],
+        "Recommendations - Pediatric": [
+          "Data on the effectiveness of surveillance to prevent or mitigate desmoid outcomes was not available. However, the first line of treatment in patients with large or growing intra-abdominal or abdominal wall tumors is sulindac in combination with high-dose selective estrogen receptor modulators (SERMs). One case series that included 64 patients with FAP reported that 86% of those treated showed regression or had stable desmoid size with a mean response time (to reach at least stable size) of 16.0 (±9.8) months with one long-term recurrence after >10 years and 2 desmoid-related deaths. However, randomized controlled data are lacking and given the variable natural history of desmoids, it is difficult to establish and qualify the benefit of this treatment regimen.",
+          "In a meta-analysis of 3 studies of 103 children, 54.3% of children who had screening EGDs had duodenal adenoma, with a pooled detection rate of 58% (95% CI, 42%-75%).",
+          "Two studies comparing patients with FAP who presented with symptoms compared with relatives of patients referred for screening, observed a much lower incidence of duodenal in those screened (incidence 2–10%) compared to those patients who presented with symptoms (47–70%).",
+          "A systematic review of patients with FAP found that 26 of 27 studies showed a statistically significant reduction in CRC incidence with surveillance (odds ratios ranged from 0.01 to 0.37) in screened patients compared to those who presented symptomatically with polyposis/CRC outside of a screening program. Eight studies examined CRC mortality, all of which showed a significant reduction in CRC mortality (odds ratios ranged from <0.01 to 0.16) in screened (N= 1028) versus symptomatic groups (N= 947). Two studies provided evidence for complete prevention of CRC-related deaths during surveillance, although the duration of follow-up was short (2-4 years).",
+          "Surgery is necessary to prevent CRC in adulthood. Therefore, endoscopic management of colorectal adenomas alone is not recommended in individuals with classic FAP. For most patients, the choice of surgery will be between total colectomy with ileorectal anastomosis (IRA) and proctocolectomy and ileal pouch anal anastomosis (IPAA). Decisions regarding the timing and type of operation should be discussed at a specialist center in a multidisciplinary setting and take into account disease phenotype (colon and rectal polyp burden, extensiveness of rectal involvement, presence and size of high-grade dysplasia, increase in polyp burden between screenings, severity of symptoms); genotype; family planning; personal and family history of desmoid disease; social, personal, and educational factors; likelihood of compliance with follow-up; and the pros and cons of the surgical options. The age of prophylactic colectomy is not fixed and is a topic that should be discussed in adolescence.",
+          "Treatment for FAP should include coordinated, timely and high-quality care to reduce cancer risk and improve compliance with recommendations for management and surveillance. Patients should be followed in dedicated units (national registries, genetic counseling centers, or high-risk cancer centers) where surveillance recommendations are monitored and audited, in order to improve adherence and provide the highest quality of care. Patients should also have access to a full range of management options that minimize the risk of morbidity and mortality.",
+          "The recommendations detailed below are largely applicable to classic and AFAP; however AFAP, with its milder course, may be manageable by colonoscopy and polypectomy and these patients may never require colectomy depending on polyp burden. However, the decision to forego colectomy should only be considered if high quality surveillance and robust recall systems are in place.",
+          "Routine screening for HPBs in patients with FAP is not consistently recommended. One guideline notes that in children found to have HPB, there is no evidence that routine genetic testing or endoscopic screening for FAP is required.",
+          "Upper gastrointestinal surveillance with esophagogastroduodenoscopy (EGD) is recommended, with thorough gastric assessment and inspection and description of the duodenum and ampullary site at every surveillance, beginning at age 25 years, with surveillance interval based on endoscopic findings (Spigelman score for duodenal adenomatosis staging) at baseline. There is some evidence that screen-detection of duodenal cancer may improve survival; FAP patients have been shown to have a median survival after a screen-detected cancer of 8 years (95% CI, 5.9 – upper end not estimated), versus 0.8 years (95% CI, 0.03-1.7) after symptomatic cancer (p < 0.0001).",
+          "There remains a risk of adenoma and CRC cancer after colectomy, and the extent of risk is influenced by the type of procedure chosen and type of tissue-sparing. Risk of developing adenomas at 10-year follow-up after IPAA is 51%. Registry studies indicate that 50-53% of patients undergo additional surgeries after their initial rectal-sparing procedure. The cumulative risk of rectal cancer varies from 2-24%, while the cumulative risk of dying from rectal cancer is between 9-12.5% following rectal-sparing procedures.",
+          "A systematic review of studies comparing CRC incidence and mortality before and after registry commencement, found 8 studies (3101 individuals) examining CRC incidence and 6 studies examining CRC mortality. Odds ratios for CRC incidence following registration range from 0.09-0.44, with all but one study showing a statistically significant effect. Odds ratios for CRC-related mortality range from 0.11-0.22, all significant.",
+          "Colonoscopic surveillance should start at age 12-14 years and be performed once every 1-3 years depending on colonic phenotype, including polyp burden. Colonoscopic surveillance enables assessment of adenoma burden and distribution, which can guide the timing and type of prophylactic surgery. Those with AFAP may not require such frequent colonoscopic surveillance as those with classical FAP."
+        ],
+        "References - Adult": "25452455; 24227356; 18194984; 20528895; 25645574; 20301519; 25248397; 28796726; 25826168; 31780574; 30585891; 31342472; 31378807; 30182306; 26898681; 29663106; 29122597; 30245076; 26331960",
+        "References - Pediatric": "25452455; 24227356; 18194984; 20528895; 25645574; 20301519; 25248397; 28796726; 25826168; 31780574; 30585891; 31342472; 31378807; 30182306; 26898681; 29663106; 29122597; 30245076; 26331960"
+      }
+    }
+  },
+  {
+    "Finding 2: BRCA1 - Pathogenic": {
+      "Basic Information": {
+        "Gene (HGNC)": "BRCA1",
+        "Transcript": "NM_007294.4",
+        "Genomic Location": "chr17:43057062",
+        "dbSNP ID": "rs80357906",
+        "cDNA Change (HGVS)": "c.5266dupC",
+        "Protein Change (HGVS)": "p.Gln1756fs",
+        "Genomic Alternation": "G > A",
+        "Variant Type": "single nucleotide variant",
+        "Zygosity": "heterozygous"
+      },
+      "ACMG Information": {
+        "ACMG Score": "20",
+        "ACMG/AMP Criteria Applied": "PVS1,PS3,PP5_Very_Strong",
+        "Final Classification": "Pathogenic"
+      },
+      "Additional Parameters": {
+        "Biotype": "protein coding",
+        "ClinVar ID": "VCV000017677",
+        "ClinVar Review Status": "★★★☆ (Expert panel)",
+        "ClinVar Submissions Summary": "P:63 O:2"
+      },
+      "ClinVar Information": {
+        "Associated Condition": "Hereditary breast/ovarian cancer",
+        "Inheritance Pattern": "AD",
+        "ClinGen Gene-Disease Validity": "Definitive for BRCA1-related cancer predisposition (Autosomal Dominant)",
+        "Key Publications": "None cited"
+      },
+      "Gene & Protein Information": {
+        "Protein Name": "Breast cancer type 1 susceptibility protein",
+        "Protein Function": "E3 ubiquitin-protein ligase that specifically mediates the formation of 'Lys-6'-linked polyubiquitin chains and plays a central role in DNA repair by facilitating cellular responses to DNA damage (PubMed:10500182, PubMed:12887909, PubMed:12890688, PubMed:14976165, PubMed:16818604, PubMed:17525340, PubMed:19261748). It is unclear whether it also mediates the formation of other types of polyubiquitin chains (PubMed:12890688)."
       },
       "Clinical Actionability": {
         "Severity": "Moderate (serious morbidity)",
@@ -50,143 +128,60 @@
           "Evaluation by hematologist with blood counts and bone marrow aspirate to monitor bone marrow failure to initiate further treatment",
           "Evaluation by provider with experience in FA to detect solid tumors and initiate treatment"
         ]
-      }
-    }
-  },
-  {
-    "Finding 2: CASQ2 - Pathogenic": {
-      "Basic Information": {
-        "Gene (HGNC)": "CASQ2",
-        "Transcript": "NM_001232.4",
-        "Genomic Location": "chr1:115744903",
-        "dbSNP ID": "rs2526032244",
-        "cDNA Change (HGVS)": "c.244C>T",
-        "Protein Change (HGVS)": "p.Gln82*",
-        "Genomic Alternation": "A > G",
-        "Variant Type": "single nucleotide variant",
-        "Zygosity": "unknown"
       },
-      "ACMG Information": {
-        "ACMG Score": "12",
-        "ACMG/AMP Criteria Applied": "PVS1,PM2,PP5_Moderate",
-        "Final Classification": "Pathogenic"
-      },
-      "Additional Parameters": {
-        "Biotype": "protein coding",
-        "ClinVar ID": "VCV002914975",
-        "ClinVar Review Status": "★☆☆☆ (Single submitter)",
-        "ClinVar Submissions Summary": "P:1"
-      },
-      "ClinVar Information": {
-        "Associated Condition": "Catecholaminergic polymorphic ventricular tachycardia",
-        "Inheritance Pattern": "Autosomal recessive",
-        "ClinGen Gene-Disease Validity": "Definitive for catecholaminergic polymorphic ventricular tachycardia (Autosomal Recessive)",
-        "Key Publications": "PMID:35802134; PMID:34012068; PMID:28492532; PMID:27854360; PMID:25356965 (+5 more)"
-      },
-      "Gene & Protein Information": {
-        "Protein Name": "Calsequestrin-2",
-        "Protein Function": "Calsequestrin is a high-capacity, moderate affinity, calcium-binding protein and thus acts as an internal calcium store in muscle. Calcium ions are bound by clusters of acidic residues at the protein surface, especially at the interface between subunits. Can bind around 60 Ca(2+) ions. Regulates the release of lumenal Ca(2+) via the calcium release channel RYR2; this plays an important role in triggering muscle contraction."
-      },
-      "Clinical Actionability": {
-        "Severity": "High (sudden death)",
-        "Outcomes": [
-          "Sudden cardiac death"
+      "Recommendations": {
+        "Recommendations - Adult": [
+          "Screening methods for ovarian cancer have not been shown to be effective among women with BRCA mutations; however, annual gynecological exam, vaginal ultrasonography, and serum 125 (CA-125) can be used for screening.",
+          "More frequent and intensive breast cancer screening, including clinical breast exams, mammography, and MRI starting at age 25. However, no screening methods have been shown to be effective at reducing breast cancer incidence among BRCA mutation carriers.",
+          "Prophylactic surgery (e.g. bilateral mastectomy or salpingo-oophorectomy) has been shown to substantially reduce the risk for breast or ovarian cancer in both high-risk women and those who are BRCA mutation carriers. Breast cancer risk was reduced by 85-100% with mastectomy and by 37% to 100% with oophorectomy. Ovarian cancer risk was reduced by 69-100% with oophorectomy. Breast cancer-specific mortality was reduced by 81-100% after mastectomy and all-cause mortality was reduced by 55-100% after oophorectomy.",
+          "Chemoprevention medications (e.g. tamoxifen, raloxifene) have been shown to reduce the incidence of breast cancer in high-risk women in the general population, but their effectiveness has not been assessed in the context of BRCA mutations."
         ],
-        "Interventions": [
-          "Antiarrhythmic therapy with beta-blockers and consideration for more intensive therapies as indicated",
-          "Avoidance of intense exercise"
-        ]
+        "References - Adult": "20376556; 24366376; 17416853"
       }
     }
   },
   {
-    "Finding 3: DSP - Likely pathogenic": {
+    "Finding 3: RYR1 - Pathogenic; drug response": {
       "Basic Information": {
-        "Gene (HGNC)": "DSP",
-        "Transcript": "NM_004415.4",
-        "Genomic Location": "chr6:7584617",
-        "dbSNP ID": "rs1581823904",
-        "cDNA Change (HGVS)": "c.7355A>T",
-        "Protein Change (HGVS)": "p.Gln2452Leu",
-        "Genomic Alternation": "C > T",
+        "Gene (HGNC)": "RYR1",
+        "Transcript": "NM_000540.3",
+        "Genomic Location": "chr19:38499993",
+        "dbSNP ID": "rs121918593",
+        "cDNA Change (HGVS)": "c.7300G>A",
+        "Protein Change (HGVS)": "p.Gly2434Arg",
+        "Genomic Alternation": "T > A",
         "Variant Type": "single nucleotide variant",
         "Zygosity": "heterozygous"
       },
       "ACMG Information": {
-        "ACMG Score": "0",
-        "ACMG/AMP Criteria Applied": "PM2,BP4_Moderate",
-        "Final Classification": "Uncertain_significance"
+        "ACMG Score": "12",
+        "ACMG/AMP Criteria Applied": "PS4,PS3,BS2,PM1,PP1_Strong,PP3_Moderate",
+        "Final Classification": "Pathogenic"
       },
       "Additional Parameters": {
         "Biotype": "protein coding",
-        "ClinVar ID": "VCV000817454",
-        "ClinVar Review Status": "★☆☆☆ (Single submitter)",
-        "ClinVar Submissions Summary": "Not available"
+        "ClinVar ID": "VCV000012970",
+        "ClinVar Review Status": "★★★☆ (Expert panel)",
+        "ClinVar Submissions Summary": "P:27 O:8"
       },
       "ClinVar Information": {
-        "Associated Condition": "Arrhythmogenic right ventricular cardiomyopathy",
-        "Inheritance Pattern": "Autosomal dominant",
-        "ClinGen Gene-Disease Validity": "Definitive for arrhythmogenic cardiomyopathy with wooly hair and keratoderma (Autosomal Dominant)",
+        "Associated Condition": "Malignant hyperthermia susceptibility",
+        "Inheritance Pattern": "AD/AR",
+        "ClinGen Gene-Disease Validity": "Definitive for malignant hyperthermia, susceptibility to, 1 (Autosomal Dominant)",
         "Key Publications": "None cited"
       },
       "Gene & Protein Information": {
-        "Protein Name": "Desmoplakin",
-        "Protein Function": "Major high molecular weight protein of desmosomes. Regulates profibrotic gene expression in cardiomyocytes via activation of the MAPK14/p38 MAPK signaling cascade and increase in TGFB1 protein abundance (By similarity)"
-      },
-      "Clinical Actionability": {
-        "Severity": "High (sudden death)",
-        "Outcomes": [
-          "Sudden cardiac death"
-        ],
-        "Interventions": [
-          "Surveillance to detect disease manifestations [cardiac arrhythmias and structural disease] to guide treatment including antiarrhythmic medications"
-        ]
-      }
-    }
-  },
-  {
-    "Finding 4: FBN1 - Pathogenic": {
-      "Basic Information": {
-        "Gene (HGNC)": "FBN1",
-        "Transcript": "NM_000138.5",
-        "Genomic Location": "chr15:48421947",
-        "dbSNP ID": "rs1566891797",
-        "cDNA Change (HGVS)": "c.7570+5G>A",
-        "Protein Change (HGVS)": "",
-        "Genomic Alternation": "G > A",
-        "Variant Type": "single nucleotide variant",
-        "Zygosity": "homozygous_reference"
-      },
-      "ACMG Information": {
-        "ACMG Score": "8",
-        "ACMG/AMP Criteria Applied": "PM2,PP3_Strong,PP5_Moderate",
-        "Final Classification": "Likely_pathogenic"
-      },
-      "Additional Parameters": {
-        "Biotype": "protein coding",
-        "ClinVar ID": "VCV000633778",
-        "ClinVar Review Status": "★☆☆☆ (Single submitter)",
-        "ClinVar Submissions Summary": "P:1"
-      },
-      "ClinVar Information": {
-        "Associated Condition": "Marfan syndrome",
-        "Inheritance Pattern": "Autosomal dominant",
-        "ClinGen Gene-Disease Validity": "Definitive for Marfan syndrome (Autosomal Dominant)",
-        "Key Publications": "PMID:35802134; PMID:34012068; PMID:28161018; PMID:27854360; PMID:25356965 (+5 more)"
-      },
-      "Gene & Protein Information": {
-        "Protein Name": "Fibrillin-1",
-        "Protein Function": "Adipokine secreted by white adipose tissue that plays an important regulatory role in the glucose metabolism of liver, muscle and pancreas (PubMed:27087445, PubMed:30853600). Hormone that targets the liver in response to fasting to increase plasma glucose levels (PubMed:27087445)."
+        "Protein Name": "Ryanodine receptor 1",
+        "Protein Function": "Cytosolic calcium-activated calcium channel that mediates the release of Ca(2+) from the sarcoplasmic reticulum into the cytosol and thereby plays a key role in triggering muscle contraction following depolarization of T-tubules (PubMed:11741831, PubMed:16163667, PubMed:18268335, PubMed:18650434, PubMed:26115329). Repeated very high-level exercise increases the open probability of the channel and leads to Ca(2+) leaking into the cytoplasm (PubMed:18268335)."
       },
       "Clinical Actionability": {
         "Severity": "Moderate (serious morbidity)",
         "Outcomes": [
-          "Clinically significant aortic aneurysm",
-          "Aortic dilation progression"
+          "Malignant hyperthermia event"
         ],
         "Interventions": [
-          "Aortic surveillance",
-          "Pharmacotherapy"
+          "Avoidance of triggering anesthetics",
+          "Awareness of high-risk situations"
         ]
       }
     }
